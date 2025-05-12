@@ -32,21 +32,7 @@ pipeline {
         }
         stage('run container') {
           steps {
-            sh 'docker run -d --name campaign-demo-server --label campaign-demo-server -p 5000:5000         }
-        }
-        stage('build image') {
-          steps {
-            sh 'docker build -t juliana467/campaign-demo:v1 --label campaign-demo-server .'
-          }
-        }
-        stage('run container') {
-          steps {
             sh 'docker run -d --name campaign-demo-server --label campaign-demo-server -p 5000:5000 juliana467/campaign-demo:v1'
-          }
-        }
-    }
-  }
-/campaign-demo:v1'
           }
         }
     }
