@@ -1,4 +1,4 @@
-pipeline {
+•	pipeline {
     agent {
         node {
         label 'dockerhost-build-server'
@@ -17,15 +17,15 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('Copying war file') {
+        stage('Copying jar file') {
             steps {
-                echo 'Copying war file..'
+                echo 'Copying jar file..'
                 sh 'mv target/*.jar .'
             }
         }
         stage('build image') {
           steps {
-            sh 'docker build -t juliana467/devops-web-project:v1 --label devops-web-project-server .'
+            sh 'docker build -t juliana467/campaign-demo:v1 --label campaign-demo-server .'
           }
         }
         stage('Docker Hub Login') {
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Push to Docker Hub') {
           steps {
-            sh 'docker push juliana467/devops-web-project:v1'
+            sh 'docker push juliana467/campaign-demo:v1'
           }
         }
     }
@@ -45,3 +45,5 @@ pipeline {
         }
     }
   }
+
+      
