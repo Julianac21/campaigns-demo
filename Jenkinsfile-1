@@ -20,7 +20,7 @@ pipeline {
         stage('Copying war file') {
             steps {
                 echo 'Copying war file..'
-                sh 'mv target/*.war .'
+                sh 'mv target/*.jar .'
             }
         }
         stage('build image') {
